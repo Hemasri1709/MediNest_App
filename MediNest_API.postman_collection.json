@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "MediNest Hospital Management API",
+    "description": "Complete API collection for MediNest Hospital Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"ADMIN\",\n  \"name\": \"Admin User\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\",\n  \"phone\": \"+1234567890\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/auth/register"}
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@medinest.com\",\n  \"password\": \"admin123\",\n  \"role\": \"ADMIN\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/auth/login"}
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/auth/me"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "Get All Patients",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/patients"}
+          }
+        },
+        {
+          "name": "Get Single Patient",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/patients/:id"}
+          }
+        },
+        {
+          "name": "Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@email.com\",\n  \"password\": \"patient123\",\n  \"phone\": \"+1234567890\",\n  \"age\": 35,\n  \"dateOfBirth\": \"1989-01-15\",\n  \"gender\": \"Male\",\n  \"bloodGroup\": \"O+\",\n  \"address\": \"123 Main St, City\",\n  \"emergencyContact\": {\n    \"name\": \"Jane Doe\",\n    \"relationship\": \"Spouse\",\n    \"phone\": \"+1234567891\"\n  }\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/patients"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Doctors",
+      "item": [
+        {
+          "name": "Get All Doctors",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/doctors"}
+          }
+        },
+        {
+          "name": "Get Doctor by Specialty",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/doctors/specialty/Cardiology"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "Get All Appointments",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/appointments"}
+          }
+        },
+        {
+          "name": "Create Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Authorization", "value": "Bearer {{token}}"},
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": \"patient_id_here\",\n  \"patientName\": \"John Doe\",\n  \"doctorId\": \"doctor_id_here\",\n  \"doctorName\": \"Dr. Sarah Johnson\",\n  \"date\": \"2025-01-10\",\n  \"time\": \"10:00 AM\",\n  \"type\": \"Checkup\",\n  \"reason\": \"Routine checkup\"\n}"
+            },
+            "url": {"raw": "http://localhost:5000/api/appointments"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Medical Records",
+      "item": [
+        {
+          "name": "Get All Medical Records",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/medical-records"}
+          }
+        },
+        {
+          "name": "Get Patient Medical Records",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {"raw": "http://localhost:5000/api/medical-records/patient/:patientId"}
+          }
+        }
+      ]
+    }
+  ]
+}

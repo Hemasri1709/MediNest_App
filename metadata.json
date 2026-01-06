@@ -1,0 +1,9 @@
+
+{
+  "name": "MediNest - Advanced Hospital Management",
+  "description": "A comprehensive, high-aesthetic hospital management system featuring patient records, appointment scheduling, billing, and AI-powered clinical assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
